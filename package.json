@@ -5,7 +5,7 @@
     "main": "app.tsx",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack-dev-server --inline --colors --profile --config ./webpack.config.js"
+        "start": "webpack-dev-server --hot --inline --colors --profile --config ./webpack.config.js"
     },
     "keywords": [
         "ts",
@@ -33,7 +33,7 @@
         "css-loader": "0.26.1",
         "extract-text-webpack-plugin": "^2.1.0",
         "file-loader": "^0.10.0",
-        "html-webpack-plugin": "2.24.1",
+        "html-webpack-plugin": "^2.24.1",
         "json-loader": "0.5.4",
         "less": "2.7.1",
         "less-loader": "2.2.3",

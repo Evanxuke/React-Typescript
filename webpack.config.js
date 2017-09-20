@@ -1,7 +1,32 @@
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
+
 var port = 8081;
-var plugins = [new ExtractTextPlugin('app.css')];
+var plugins = [
+    new ExtractTextPlugin('app.css'),
+    new HtmlWebpackPlugin({
+        //favicon: './favicon.ico', //favicon路径
+        filename: '../index.html',
+        template: "./src/index.html",
+        inject: true,
+        hash: true,
+        minify: {
+            removeComments: true,
+            collapseWhitespace: false,
+            removeRedundantAttributes: true,
+            useShortDoctype: true,
+            removeEmptyAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true
+        }
+    })
+];
 module.exports = {
     entry: {
         app: ['./src/app']
@@ -16,7 +41,7 @@ module.exports = {
     devServer: {
         headers: {"Access-Control-Allow-Origin": "*"},
         host: '0.0.0.0',
-        https: false,
+        https: true,
         port: port
     },
     module: {

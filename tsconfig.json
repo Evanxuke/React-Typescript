@@ -26,9 +26,6 @@
             "es2015.collection"
         ]
     },
-    "include": [
-        "src/**"
-    ],
     "exclude": [
         "out",
         "node_modules"
