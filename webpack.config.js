@@ -1,5 +1,8 @@
+//webpack获取当前项目绝对路径
 var path = require('path');
+//css打包插件
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+//热加载->自动生成以指定index为模板的html页面,该页面会将项目中的js以及css等自动引入
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
@@ -33,7 +36,7 @@ module.exports = {
     },//已多次提及的唯一入口文件
     output: {
         path: "/",
-        publicPath: 'https://127.0.0.1:' + port + '/',//打包后的文件存放的地方
+        publicPath: 'https://127.0.0.1:' + port + '/',
         filename: '[name].js',
         chunkFilename: '[name].js'
     },
