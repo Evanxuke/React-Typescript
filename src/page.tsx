@@ -8,7 +8,7 @@ interface PageStates {
 
 export class Page extends React.Component<PageProps, PageStates> {
     render() {
-        return <div>
+        return <div className={'red'}>
             {'asdasdasdasd'}
         </div>;
     }

@@ -1,5 +1,7 @@
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var port = 8081;
+var plugins = [new ExtractTextPlugin('app.css')];
 module.exports = {
     entry: {
         app: ['./src/app']
@@ -26,9 +28,20 @@ module.exports = {
             }, {
                 test: /\.json$/,
                 loader: 'json-loader'
+            }, {
+                test: /\.css$/,
+                use: ['style-loader', "css-loader"]
+            }, {
+                test: /\.less$/,
+                exclude: /^node_modules$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: ["css-loader", "less-loader"]
+                })
             }
         ]
     },
+    plugins: plugins,
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         modules: [
