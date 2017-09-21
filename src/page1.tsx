@@ -1,8 +1,8 @@
 import * as React from 'react';
-interface PageProps {
+export interface PageProps {
 
 }
-interface PageStates {
+export interface PageStates {
 
 }
 export class Page extends React.Component<PageProps, PageStates> {

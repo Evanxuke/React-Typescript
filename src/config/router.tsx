@@ -1,10 +1,11 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Router, Route, Link,browserHistory } from 'react-router';
+import { Router, Route,hashHistory } from 'react-router';
 import {PathConfig} from './pathconfig';
 import {RouterTest} from '../page/';
+
+const history=hashHistory;
 export let router=(
-    <Router history={browserHistory}>
+    <Router history={history}>
         <Route path={PathConfig.RouterTest} component={RouterTest} />
     </Router>
 );
