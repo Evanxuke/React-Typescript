@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {render} from "react-dom";
-import {Page} from './page';
+import {Page} from './page1';
 
 require.ensure([], () => {
     require("./themes/main.less");

@@ -9,7 +9,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var port = 8081;
 var plugins = [
-    new ExtractTextPlugin('app.css'),
+    //它将从每一个用到了require("app.css")的entry chunks文件中抽离出css到单独的output文件
+    new ExtractTextPlugin('[name].less?[contenthash]'),
     new HtmlWebpackPlugin({
         //favicon: './favicon.ico', //favicon路径
         filename: '../index.html',
@@ -32,8 +33,9 @@ var plugins = [
 ];
 module.exports = {
     entry: {
+        //已多次提及的唯一入口文件
         app: ['./src/app']
-    },//已多次提及的唯一入口文件
+    },
     output: {
         path: "/",
         publicPath: 'https://127.0.0.1:' + port + '/',
@@ -51,6 +53,7 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx|\.ts$/,
+                //排除什么文件
                 exclude: /^node_modules$/,
                 loader: 'awesome-typescript-loader'
             }, {
@@ -62,6 +65,7 @@ module.exports = {
             }, {
                 test: /\.less$/,
                 exclude: /^node_modules$/,
+                //遵循上面定义的规则，搜索所有对应css文件将其编译打包
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: ["css-loader", "less-loader"]
@@ -71,6 +75,7 @@ module.exports = {
     },
     plugins: plugins,
     resolve: {
+        //编译搜索规则
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         modules: [
             path.join(__dirname, "src"),
