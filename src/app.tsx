@@ -7,4 +7,4 @@ require.ensure([], () => {
     require("./themes/main.less");
 }, "main.css");
 
-render(<Page></Page>, document.getElementById('app_content'));
+render(<Page>{router}</Page>, document.getElementById('app_content'));
