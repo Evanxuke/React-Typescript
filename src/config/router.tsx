@@ -16,7 +16,7 @@ function checkAuth(nextState, replace) {
 };
 
 export let router = (
-    <Router history={history}>
+    <Router history={hashHistory}>
         <Route path={PathConfig.RouterTest} onEnter={checkAuth} component={RouterTest}>
             <IndexRoute component={Home}/>
             <Route path="/Store" component={Store}/>
