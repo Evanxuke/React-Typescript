@@ -9,7 +9,7 @@ interface RouterTestStates{}
 
 class RouterTest extends React.Component<RouterTestProps,RouterTestStates>{
     render(){
-        return <div>这里是内容页</div>;
+        return <div>{this.props.children}</div>;
     }
 }
 

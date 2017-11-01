@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {render} from "react-dom";
 import {router} from './config/router';
-import {Page} from './page1';
+import {BasePage} from './basepage';
 
 require.ensure([], () => {
     require("./themes/main.less");
 }, "main.css");
 
-render(<Page>{router}</Page>, document.getElementById('app_content'));
+render(<BasePage>{router}</BasePage>, document.getElementById('app_content'));
