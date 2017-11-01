@@ -1,11 +1,10 @@
 import * as React from 'react';
-import {Router, Route, hashHistory, IndexRoute} from 'react-router';
+import {Router, Route, IndexRoute, hashHistory} from "react-router";
 import {PathConfig} from './pathconfig';
 import {RouterTest, Home, Store} from '../page/';
 
 function checkAuth(nextState, replace) {
 };
-/*
 
 const router = (
     <Router history={hashHistory}>
@@ -17,4 +16,3 @@ const router = (
 );
 
 export default router;
-*/
