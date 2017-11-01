@@ -1,4 +1,4 @@
-export class PathConfig{
+export class PathConfig {
     static Home = "/";
-    static RouterTest="/routertest";
+    static RouterTest = "/routertest";
 }
