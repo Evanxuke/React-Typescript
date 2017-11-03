@@ -3,7 +3,7 @@ import {withRouter} from 'react-router';
 import {injectIntl, InjectedIntlProps} from "react-intl";
 
 
-export interface StoreProps extends ReactRouter.RouteComponentProps<any, any>, InjectedIntlProps {
+export interface StoreProps {
 }
 export interface StoreStates {
 }
