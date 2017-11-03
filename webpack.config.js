@@ -5,14 +5,24 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 //热加载->自动生成以指定index为模板的html页面,该页面会将项目中的js以及css等自动引入
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
-
+const target = '';
 var port = 8081;
+var proxy = {
+    "/api/*": {
+        changeOrigin: true,
+        target: target,
+        secure: false
+    },
+    "/common/api/*": {
+        target: target,
+        secure: false
+    }
+}
 var plugins = [
     //它将从每一个用到了require("app.css")的entry chunks文件中抽离出css到单独的output文件
     new ExtractTextPlugin('[name].less?[contenthash]'),
     new HtmlWebpackPlugin({
-        //favicon: './favicon.ico', //favicon路径
+        favicon: './favicon.ico', //favicon路径
         filename: '../index.html',
         template: "./src/index.html",
         inject: true,
@@ -44,26 +54,24 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
-        headers: {"Access-Control-Allow-Origin": "*"},
-        host: '0.0.0.0',
-        https: true,
-        port: port
+        proxy: proxy,
+        host: '0.0.0.0'
     },
     module: {
         rules: [
             {
                 test: /\.tsx|\.ts$/,
-                //排除什么文件
                 exclude: /^node_modules$/,
-                loader: 'awesome-typescript-loader'
+                use: 'awesome-typescript-loader'
+                // loader: 'ts-loader'
+            }, {
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                use: 'url-loader?limit=50000&name=[path][name].[ext]'
             }, {
                 test: /\.json$/,
                 loader: 'json-loader'
             }, {
-                test: /\.css$/,
-                use: ['style-loader', "css-loader"]
-            }, {
-                test: /\.less$/,
+                test: /\.(less|css)$/,
                 exclude: /^node_modules$/,
                 //遵循上面定义的规则，搜索所有对应css文件将其编译打包
                 use: ExtractTextPlugin.extract({
@@ -75,11 +83,10 @@ module.exports = {
     },
     plugins: plugins,
     resolve: {
-        //编译搜索规则
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        modules: [
-            path.join(__dirname, "src"),
-            "node_modules"
-        ]
-    }
+        extensions: [
+            '.js', '.jsx', '.ts', '.tsx'
+        ],
+        alias: {}
+    },
+    externals: []
 };

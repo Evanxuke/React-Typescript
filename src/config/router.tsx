@@ -10,7 +10,7 @@ const router = (
     <Router history={hashHistory}>
         <Route path={PathConfig.RouterTest} onEnter={checkAuth} component={RouterTest}>
             <IndexRoute component={Home}/>
-            <Route path="/Store" component={Store}/>
+            <Route path={PathConfig.Home} component={Home}/>
         </Route>
     </Router>
 );

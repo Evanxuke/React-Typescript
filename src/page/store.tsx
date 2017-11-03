@@ -1,15 +1,17 @@
 import * as React from 'react';
 import {withRouter} from 'react-router';
-import {injectIntl,InjectedIntlProps} from "react-intl";
+import {injectIntl, InjectedIntlProps} from "react-intl";
 
 
-interface StoreProps extends ReactRouter.RouteComponentProps<any, any>,InjectedIntlProps{}
-interface StoreStates{}
+export interface StoreProps extends ReactRouter.RouteComponentProps<any, any>, InjectedIntlProps {
+}
+export interface StoreStates {
+}
 
 
-class Store extends React.Component<StoreProps,StoreStates>{
-    render(){
-        return <div>{'Store'}</div>;
+export class Store extends React.Component<StoreProps, StoreStates> {
+    render() {
+        return <div>{'Store1'}</div>;
     }
 }
 
