@@ -3,6 +3,7 @@ import {LocaleProvider} from 'antd';
 import {IntlProvider, injectIntl} from "react-intl";
 import {loadLocale} from './locales/index';
 import {AppLocaleStatic, Global, AppContext} from './common/common';
+import {Provider} from "react-redux";
 import {MasterPage} from './masterpage';
 
 export interface BasePageProps {
@@ -63,13 +64,18 @@ export class BasePage extends React.Component<BasePageProps, BasePageStates> {
 
     render() {
         const {appLocale} = this.state;
-        if (!appLocale)return null;
-        return <LocaleProvider locale={appLocale.antd}>
-            <IntlProvider key={appLocale.locale}
-                          locale={appLocale.locale}
-                          messages={appLocale.messages}>
+        let content = appLocale ? <LocaleProvider locale={appLocale.antd}>
+            <IntlProvider
+                key={appLocale.locale}
+                locale={appLocale.locale}
+                messages={appLocale.messages}>
                 <this.GlobalIntlInject />
-            </IntlProvider>;
-        </LocaleProvider>;
+            </IntlProvider>
+        </LocaleProvider>
+            : <div>
+            </div>;
+        return <Provider store={Global.store}>
+            {content}
+        </Provider>;
     }
 }

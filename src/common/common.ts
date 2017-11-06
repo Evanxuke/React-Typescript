@@ -1,4 +1,5 @@
 import {Cookies} from '../util/cookie';
+import { Store } from "redux";
 /**
  * 国际化
  */
@@ -21,6 +22,7 @@ export class AppLocaleStatic {
 }
 
 export class Global {
+    static store: Store<any>;
     static intl: ReactIntl.InjectedIntl;
 }
 
