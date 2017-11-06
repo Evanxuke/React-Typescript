@@ -7,4 +7,4 @@ require.ensure([], () => {
     require("./themes/main.less");
 }, "main.css");
 
-render(<BasePage>{router}</BasePage>, document.getElementById('app_content'));
+render(<BasePage requireMasterpage={true}>{router}</BasePage>, document.getElementById('app_content'));
